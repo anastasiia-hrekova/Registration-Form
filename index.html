@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./css/style.css">
+
+
+    <script src="./js/script.js" defer></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="block-form">
+            <h1>Заповніть форму</h1>
+            <form id="dataForm" class="form">
+                
+                    <input type="text" id="first-name" name="firstName" class="form-input" placeholder="Введіть ім'я*" required><br>
+                
+                    <input type="text" id="last-name" name="secondName" class="form-input" placeholder="Введіть прізвище*" required><br>
+               
+                    <input type="url" id="linkedin-url" name="linkedIn" class="form-input"
+                        pattern="https?://(www\.)?linkedin\.com/.*" placeholder="Посилання на LinkedIn*" required><br>
+
+                <div class="form-lines">
+                    <label for="specialization" class="form-text">Спеціальність:</label>
+                    <select id="specialization" name="specialization" class="form-select">
+                        <option value="frontend">Frontend Developer</option>
+                        <option value="backend">Backend Developer</option>
+                        <option value="qa">QA Engineer</option>
+                        <option value="devops">DevOps Engineer</option>
+                    </select>
+                </div>
+
+                <button type="submit" id="submit" class="form-button">Відправити</button>
+            </form>
+
+            <!-- <div class="message" id="successMessage">Дані успішно відправленні!</div> -->
+
+        </div>
+    </div>
+   
+</body>
+
+</html>
