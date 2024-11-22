@@ -16,6 +16,7 @@ form.addEventListener('submit', e => {
     successMessage.style.fontSize = '30px';
     successMessage.style.color = '#1c0d7d';
     successMessage.style.color = 'Poppins';
+    successMessage.style.padding = '20px';
     
     
     form.parentElement.appendChild(successMessage);
