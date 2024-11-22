@@ -20,21 +20,21 @@
     <div class="container">
         <div class="block-form">
             <h1 class="form__title">Заповніть форму</h1>
-            <form id="dataForm" class="form">
+            <form id="form" method="post" class="form">
                 <div class="form__lines-name">
                     <div class="form__lines">
                         <label for="first-name" class="form__text">Ім'я*:</label>
-                    <input type="text" id="first-name" name="firstName" class="form__input" required><br>
+                    <input type="text" id="first-name" name="firstName" class="form__input" required autofocus><br>
                     </div>
 
                     <div class="form__lines">
                         <label for="last-name" class="form__text">Прізвище*:</label>
-                    <input type="text" id="last-name" name="secondName" class="form__input" required><br>
+                    <input type="text" id="last-name" name="lastName" class="form__input" required ><br>
                     </div>
                 </div>
                 <div class="form__lines">
                     <label for="linkedin-url" class="form__text">Посилання на LinkedIn*:</label>
-                    <input type="url" id="linkedin-url" name="linkedIn" class="form__input"
+                    <input type="url" id="linkedin-url" name="linkedInUrl" class="form__input"
                         pattern="https?://(www\.)?linkedin\.com/.*" required><br>
                 </div>
                 <div class="form__lines">
@@ -51,8 +51,6 @@
 
                 <button type="submit" id="submit" class="form__button">Відправити</button>
             </form>
-
-            <!-- <div class="message" id="successMessage">Дані успішно відправленні!</div> -->
 
         </div>
     </div>
