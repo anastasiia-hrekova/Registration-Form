@@ -1,12 +1,14 @@
 const scriptURL = 'https://script.google.com/macros/s/AKfycbznv3CdzfyhPJLZyglTk6jj3rXH8Dtv_cOMKY_3T8KGC1OwiOuXD3jpTDpMkZVelenWbw/exec'
 
 
-const form = document.forms['form']
+const form = document.forms['form'];
+const title =document.querySelector(".form__title")
 
 form.addEventListener('submit', e => {
     e.preventDefault();
     
     form.style.display = 'none';
+    title.style.display = 'none';
     
 
     const successMessage = document.createElement('div');
