@@ -3,14 +3,39 @@ const scriptURL = 'https://script.google.com/macros/s/AKfycbznv3CdzfyhPJLZyglTk6
 
 const form = document.forms['form']
 
-
 form.addEventListener('submit', e => {
-    e.preventDefault()
+    e.preventDefault();
+    
+    form.style.display = 'none';
+    
+
+    const successMessage = document.createElement('div');
+    successMessage.innerText = 'Дані успішно відправлені!';
+    successMessage.style.fontSize = '30px';
+    successMessage.style.color = '#1c0d7d';
+    successMessage.style.color = 'Poppins';
+    
+    
+    form.parentElement.appendChild(successMessage);
+    
+    
     fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-        .then(response => alert("Дані успішно відправлені"))
-        .then(() => { window.location.reload(); })
-        .catch(error => console.error('Error!', error.message))
-})
+        .then(response => {
+            console.log("Дані успішно відправлені");
+        })
+        .catch(error => {
+            console.error('Error!', error.message);
+        });
+});
+
+
+// form.addEventListener('submit', e => {
+//     e.preventDefault()
+//     fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+//         .then(response => alert("Дані успішно відправлені"))
+//         .then(() => { window.location.reload(); })
+//         .catch(error => console.error('Error!', error.message))
+// })
 
 
 // КОД В GoogleScript
