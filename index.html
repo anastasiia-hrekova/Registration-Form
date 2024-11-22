@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/main.min.css">
 
 
     <script src="./js/script.js" defer></script>
@@ -19,34 +19,44 @@
 <body>
     <div class="container">
         <div class="block-form">
-            <h1>Заповніть форму</h1>
+            <h1 class="form__title">Заповніть форму</h1>
             <form id="dataForm" class="form">
-                
-                    <input type="text" id="first-name" name="firstName" class="form-input" placeholder="Введіть ім'я*" required><br>
-                
-                    <input type="text" id="last-name" name="secondName" class="form-input" placeholder="Введіть прізвище*" required><br>
-               
-                    <input type="url" id="linkedin-url" name="linkedIn" class="form-input"
-                        pattern="https?://(www\.)?linkedin\.com/.*" placeholder="Посилання на LinkedIn*" required><br>
+                <div class="form__lines-name">
+                    <div class="form__lines">
+                        <label for="first-name" class="form__text">Ім'я*:</label>
+                    <input type="text" id="first-name" name="firstName" class="form__input" required><br>
+                    </div>
 
-                <div class="form-lines">
-                    <label for="specialization" class="form-text">Спеціальність:</label>
-                    <select id="specialization" name="specialization" class="form-select">
-                        <option value="frontend">Frontend Developer</option>
-                        <option value="backend">Backend Developer</option>
-                        <option value="qa">QA Engineer</option>
-                        <option value="devops">DevOps Engineer</option>
-                    </select>
+                    <div class="form__lines">
+                        <label for="last-name" class="form__text">Прізвище*:</label>
+                    <input type="text" id="last-name" name="secondName" class="form__input" required><br>
+                    </div>
+                </div>
+                <div class="form__lines">
+                    <label for="linkedin-url" class="form__text">Посилання на LinkedIn*:</label>
+                    <input type="url" id="linkedin-url" name="linkedIn" class="form__input"
+                        pattern="https?://(www\.)?linkedin\.com/.*" required><br>
+                </div>
+                <div class="form__lines">
+                    <label for="specialization" class="form__text">Спеціальність:</label>
+                    <div class="form__select-wrapper">
+                        <select id="specialization" name="specialization" class="form__select">
+                            <option value="frontend">Frontend Developer</option>
+                            <option value="backend">Backend Developer</option>
+                            <option value="qa">QA Engineer</option>
+                            <option value="devops">DevOps Engineer</option>
+                        </select>
+                    </div>
                 </div>
 
-                <button type="submit" id="submit" class="form-button">Відправити</button>
+                <button type="submit" id="submit" class="form__button">Відправити</button>
             </form>
 
             <!-- <div class="message" id="successMessage">Дані успішно відправленні!</div> -->
 
         </div>
     </div>
-   
+
 </body>
 
 </html>
