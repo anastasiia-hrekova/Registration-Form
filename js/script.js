@@ -1,64 +1,89 @@
-const URL_APP = "https://script.google.com/macros/s/AKfycbzS-0OuffSyKrxQ1FC8TZRhttvLMnvq-OHPQcVQLAttwhpHjY7ptWdpQaD8pP8UeM74Xg/exec";
+const scriptURL = 'https://script.google.com/macros/s/AKfycbznv3CdzfyhPJLZyglTk6jj3rXH8Dtv_cOMKY_3T8KGC1OwiOuXD3jpTDpMkZVelenWbw/exec'
 
-const form = document.querySelector("#form");
 
-form.action = URL_APP;
+const form = document.forms['form']
 
-function isFilled(details) {
-    const { firstName, lastName, linkedInUrl } = details;
-    if (!firstName) return false;
-    if (!lastName) return false;
-    if (!linkedInUrl) return false;
-    return true;
-}
 
-form.addEventListener("submit", async (ev) => {
-    ev.preventDefault();
+form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+        .then(response => alert("Дані успішно відправлені"))
+        .then(() => { window.location.reload(); })
+        .catch(error => console.error('Error!', error.message))
+})
 
-    const firstName = document.querySelector("[name=firstName]");
-    const lastName = document.querySelector("[name=lastName]");
-    const linkedInUrl = document.querySelector("[name=linkedInUrl]");
-    const specialization = document.querySelector("[name=specialization]");
 
-    let details = {
-        firstName: firstName.value.trim(),
-        lastName: lastName.value.trim(),
-        linkedInUrl: linkedInUrl.value.trim(),
-        specialization: specialization.value.trim(),
+// КОД В GoogleScript
 
-    };
 
-    if (!isFilled(details)) return;
 
-    let formBody = [];
-    for (let property in details) {
-        let encodedKey = encodeURIComponent(property);
-        let encodedValue = encodeURIComponent(details[property]);
-        formBody.push(encodedKey + "=" + encodedValue);
-    }
+// const sheetName = 'dataTable'
+// const scriptProp = PropertiesService.getScriptProperties()
 
-    formBody = formBody.join("&");
 
-    const result = await fetch(URL_APP, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
-        },
-        mode: "cors",
-        body: formBody,
-    })
-        .then((res) => res.json())
-            .catch((err) => alert("Помилка!"))
+// function intialSetup () {
+//   const activeSpreadsheet = SpreadsheetApp.getActiveSpreadsheet()
+//   scriptProp.setProperty('key', activeSpreadsheet.getId())
+// }
 
-            if( result.type === 'success'){
-                firstName.value = '';
-                lastName.value = '';
-                linkedInUrl.value = '';
-                specialization.value = '';
-                alert('Дані успішно відправлені!')
-            }
-            if(result.type === 'error'){
-                alert('Помилка ${result.errors}')
-            }
 
-});
+// function doPost (e) {
+
+//    if (!e || !e.parameter) {
+//     return ContentService
+//       .createTextOutput(JSON.stringify({ 'result': 'error', 'error': 'No parameters in request' }))
+//       .setMimeType(ContentService.MimeType.JSON);
+//   }
+
+//   const lock = LockService.getScriptLock()
+//   lock.tryLock(30000)
+
+
+//   try {
+//     Logger.log(e.parameter);
+//     const doc = SpreadsheetApp.openById(scriptProp.getProperty('key'))
+//     const sheet = doc.getSheetByName(sheetName)
+
+
+//     const headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0]
+//     const nextRow = sheet.getLastRow() + 1
+
+
+//    function formatDate(date) {
+//       const day = String(date.getDate()).padStart(2, '0');
+//       const month = String(date.getMonth() + 1).padStart(2, '1'); 
+//       const year = date.getFullYear();
+//       return `${day}-${month}-${year}`;
+//     }
+
+//     const newRow = headers.map(function(header) {
+//       if (header === 'Date') {
+//         // Используем форматированную дату
+//         return formatDate(new Date());
+//       } else {
+//         return e.parameter[header];
+//       }
+//     });
+
+
+//     sheet.getRange(nextRow, 1, 1, newRow.length).setValues([newRow])
+
+
+//     return ContentService
+//       .createTextOutput(JSON.stringify({ 'result': 'success', 'row': nextRow }))
+//       .setMimeType(ContentService.MimeType.JSON)
+//   }
+
+
+//   catch (e) {
+//     Logger.log(e); 
+//     return ContentService
+//       .createTextOutput(JSON.stringify({ 'result': 'error', 'error': e }))
+//       .setMimeType(ContentService.MimeType.JSON)
+//   }
+
+
+//   finally {
+//     lock.releaseLock()
+//   }
+// }
