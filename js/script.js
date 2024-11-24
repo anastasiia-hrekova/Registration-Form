@@ -64,7 +64,7 @@ form.addEventListener('submit', e => {
 //   }
 
 //   const lock = LockService.getScriptLock()
-//   lock.tryLock(30000)
+//   lock.tryLock(10000)
 
 
 //   try {
