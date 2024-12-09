@@ -34,7 +34,11 @@
                 </div>
                 <div class="form__lines">
                     <label for="telegram-nickname" class="form__text">Нікнейм Telegram*:</label>
-                    <input type="text" id="telegram-nickname" name="telegramNickname" class="form__input" required><br>
+                    <input type="text" id="telegram-nickname" name="telegramNickname" class="form__input"  required><br>
+                </div>
+                <div class="form__lines">
+                    <label for="phone" class="form__text">Номер телефону*:</label>
+                    <input type="tel" id="phone" name="phoneNumber" class="form__input" pattern="^\+380\d{9}$" title="Введіть номер телефону в форматі +380XXXXXXXXX" required><br>
                 </div>
                 <div class="form__lines">
                     <label for="specialization" class="form__text">Спеціальність:</label>
